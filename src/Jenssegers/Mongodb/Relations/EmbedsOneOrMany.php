@@ -94,9 +94,10 @@ abstract class EmbedsOneOrMany extends Relation
     /**
      * Shorthand to get the results of the relationship.
      *
+     * @param  array  $columns
      * @return Collection
      */
-    public function get()
+    public function get($columns = ['*'])
     {
         return $this->getResults();
     }
@@ -104,9 +105,10 @@ abstract class EmbedsOneOrMany extends Relation
     /**
      * Get the number of embedded models.
      *
+     * @param  string  $columns
      * @return int
      */
-    public function count()
+    public function count($columns = '*')
     {
         return count($this->getEmbedded());
     }
