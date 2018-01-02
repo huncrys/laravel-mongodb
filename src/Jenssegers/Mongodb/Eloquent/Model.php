@@ -89,6 +89,10 @@ abstract class Model extends BaseModel
      */
     protected function asDateTime($value)
     {
+        if (is_null($value)) {
+            return parent::asDateTime(Carbon::create(0, 0, 0, 0, 0, 0, 'UTC'));
+        }
+
         // Convert UTCDateTime instances.
         if ($value instanceof UTCDateTime) {
             return Carbon::createFromTimestamp($value->toDateTime()->getTimestamp());
